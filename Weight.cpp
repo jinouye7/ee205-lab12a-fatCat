@@ -38,6 +38,7 @@ Weight::UnitOfWeight Weight::getUnitOfWeight() const {
 
 ///////////////////////////////////constructors //////////////////////////
 ///default values
+
 Weight::Weight() {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = POUND;
@@ -45,8 +46,13 @@ Weight::Weight() {
 //// weight with a value ///
 Weight::Weight(float newWeight) {
     setWeight(newWeight);
+    unitOfWeight = POUND;
 }
 
-///no value and
+//// weight with UnitOfWeight ///
+Weight::Weight(Weight::UnitOfWeight newUnitOfWeight)  {
+    weight = UNKNOWN_WEIGHT;
+    unitOfWeight = newUnitOfWeight;
+}
 
 

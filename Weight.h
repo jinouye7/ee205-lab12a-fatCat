@@ -47,6 +47,9 @@ public:
     /// weight with value ///
     Weight(float newWeight);
 
+    /// weight with unit ///
+    Weight(UnitOfWeight newUnitOfWeight);
+
 
 private:
 //////////////////////////////private attributes//////////////////////////////

@@ -25,5 +25,7 @@ int main() {
     testCat = Weight(35);
     cout << testCat.getWeight() << endl;
     cout << testCat.getUnitOfWeight() << endl;
-
+    testCat = Weight( Weight::KILO);
+    cout << testCat.getWeight() << endl;
+    cout << testCat.getUnitOfWeight() << endl;
 };
