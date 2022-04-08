@@ -9,3 +9,44 @@
 /// @date   07_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #include "Weight.h"
+
+#include <cassert>
+#include <iostream>
+#include <stdexcept>
+#include <iomanip>
+/////////////////////////////////////weight setters///////////////////////////
+/// default unit ///
+void Weight::setWeight(float newWeight) {
+    Weight::weight = newWeight;
+}
+/// set unit and value ///
+void Weight::setWeight(float newWeight, UnitOfWeight weightUnits) {
+    Weight::weight = newWeight;
+    unitOfWeight = weightUnits;
+}
+
+
+////////////////////////////////////weight getters ////////////////////////
+float Weight::getWeight() const {
+    return weight;
+}
+
+Weight::UnitOfWeight Weight::getUnitOfWeight() const {
+    return unitOfWeight;
+}
+
+
+///////////////////////////////////constructors //////////////////////////
+///default values
+Weight::Weight() {
+    weight = UNKNOWN_WEIGHT;
+    unitOfWeight = POUND;
+}
+//// weight with a value ///
+Weight::Weight(float newWeight) {
+    setWeight(newWeight);
+}
+
+///no value and
+
+
