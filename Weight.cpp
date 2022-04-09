@@ -20,19 +20,25 @@ void Weight::setWeight(float newWeight) {
     Weight::weight = newWeight;
 }
 /// set unit and value ///
-void Weight::setWeight(float newWeight, UnitOfWeight weightUnits) {
+void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
     Weight::weight = newWeight;
     unitOfWeight = weightUnits;
 }
 
 
 ////////////////////////////////////weight getters ////////////////////////
+///weight///
 float Weight::getWeight() const {
     return weight;
 }
 
+///unit///
 Weight::UnitOfWeight Weight::getUnitOfWeight() const {
     return unitOfWeight;
+}
+///max weight///
+float Weight::getMaxWeight() const {
+    return maxWeight;
 }
 
 
@@ -43,16 +49,26 @@ Weight::Weight() {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = POUND;
 }
-//// weight with a value ///
+//// new weight default unit ///
 Weight::Weight(float newWeight) {
     setWeight(newWeight);
     unitOfWeight = POUND;
 }
 
-//// weight with UnitOfWeight ///
+//// default weight new unit ///
 Weight::Weight(Weight::UnitOfWeight newUnitOfWeight)  {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = newUnitOfWeight;
 }
 
+//// new weight new unit ////
+Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
+    setWeight(newWeight, newUnitOfWeight);
+}
+
+//// new weight with maximum ///
+Weight::Weight(float newWeight, float newMaxWeight)  {
+    setWeight(newWeight);
+    maxWeight = newMaxWeight;
+}
 

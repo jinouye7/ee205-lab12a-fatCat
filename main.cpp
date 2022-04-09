@@ -20,12 +20,15 @@ using namespace std;
 
 int main() {
     Weight testCat;
-    cout << testCat.getWeight() << endl;
-    cout << testCat.getUnitOfWeight() << endl;
+    cout <<"default\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() << endl;
     testCat = Weight(35);
-    cout << testCat.getWeight() << endl;
-    cout << testCat.getUnitOfWeight() << endl;
+    cout <<"new weight default unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() << endl;
     testCat = Weight( Weight::KILO);
-    cout << testCat.getWeight() << endl;
-    cout << testCat.getUnitOfWeight() << endl;
+    cout <<"default weight new unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() << endl;
+    testCat = Weight(50, Weight::SLUG);
+    cout <<"new weight new unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() << endl;
+    testCat = Weight(70, 80);
+    cout <<"new weight new unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
+    testCat.getMaxWeight();
+
 };

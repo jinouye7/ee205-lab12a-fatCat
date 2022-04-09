@@ -10,10 +10,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef EE205_LAB12A_FATCAT_WEIGHT_H
 #define EE205_LAB12A_FATCAT_WEIGHT_H
-#define UNKNOWN_WEIGHT -1
+//#define UNKNOWN_WEIGHT -1
 
 #include <string>
 #include <ostream>
+
 
 class Weight {
 
@@ -30,10 +31,12 @@ public:
     void setWeight(float newWeight, UnitOfWeight weightUnits);
 
 /////// Weight getters //////////////
-///weight
+    /// weight
     float getWeight() const;
     /// unit
     UnitOfWeight getUnitOfWeight() const;
+    /// max weight
+    float getMaxWeight() const;
 
 //////// Weight validation //////////
     /// validate weight ///
@@ -44,11 +47,26 @@ public:
 //////// Weight constructors /////////
     ///default weight///
     Weight();
-    /// weight with value ///
+    /// new weight default unit ///
     Weight(float newWeight);
 
-    /// weight with unit ///
+    /// default weight new unit ///
     Weight(UnitOfWeight newUnitOfWeight);
+
+    /// new weight new unit ///
+    Weight(float newWeight, UnitOfWeight newUnitOfWeight);
+
+    Weight(float weight, float maxWeight);
+
+
+////////////////////////////// static public member functions ////////////////
+
+
+///////////////////////////static public attributes//////////////////////////
+
+    constexpr static const float 	UNKNOWN_WEIGHT = -1;
+    constexpr static const float 	KILOS_IN_A_POUND = 0.453592;
+    constexpr static const float 	SLUGS_IN_A_POUND = 0.031081;
 
 
 private:
