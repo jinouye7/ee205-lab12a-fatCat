@@ -28,7 +28,10 @@ int main() {
     testCat = Weight(50, Weight::SLUG);
     cout <<"new weight new unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() << endl;
     testCat = Weight(70, 80);
-    cout <<"new weight new unit\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
-    testCat.getMaxWeight();
+    cout <<"new weight with max\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
+    testCat.getMaxWeight() << endl;
+    testCat = Weight(Weight::KILO, 80);
+    cout <<"default weight, new unit with max\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
+    testCat.getMaxWeight() << endl;
 
 };

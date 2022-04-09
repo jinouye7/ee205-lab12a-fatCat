@@ -56,7 +56,11 @@ public:
     /// new weight new unit ///
     Weight(float newWeight, UnitOfWeight newUnitOfWeight);
 
+    /// new weight with max ///
     Weight(float weight, float maxWeight);
+
+    /// default weight, new unit, max ///
+    Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
 
 
 ////////////////////////////// static public member functions ////////////////

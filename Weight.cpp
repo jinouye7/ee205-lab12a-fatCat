@@ -72,3 +72,10 @@ Weight::Weight(float newWeight, float newMaxWeight)  {
     maxWeight = newMaxWeight;
 }
 
+/// default weight, new unit, max ///
+Weight::Weight( Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+    weight = UNKNOWN_WEIGHT;
+    unitOfWeight = newUnitOfWeight;
+    maxWeight = newMaxWeight;
+}
+
