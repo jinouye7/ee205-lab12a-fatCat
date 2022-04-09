@@ -62,6 +62,9 @@ public:
     /// default weight, new unit, max ///
     Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
 
+    /// new weight, new unit, new max ///
+    Weight(float weight, UnitOfWeight unitOfWeight, float maxWeight);
+
 
 ////////////////////////////// static public member functions ////////////////
 
