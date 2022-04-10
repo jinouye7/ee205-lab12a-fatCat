@@ -31,7 +31,7 @@ int main() {
     cout <<"new weight with max\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
     testCat.getMaxWeight() << endl;
 
-    /*
+
     testCat = Weight(Weight::KILO, 80);
     cout <<"default weight, new unit with max\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
     testCat.getMaxWeight() << endl;
@@ -45,7 +45,7 @@ int main() {
     cout << "hasMaxWeight: " <<testCat2.hasMaxWeight() << endl;
     cout << "isWeightKnown: " <<testCat2.isWeightKnown() << endl;
     Weight testCat3 = Weight(35, Weight::POUND, 60);
-    cout <<"default values (hasMaxWeight and Weight know should both return true)" << endl;
+    cout <<"set values (hasMaxWeight and Weight know should both return true)" << endl;
     cout << "hasMaxWeight: " <<testCat3.hasMaxWeight() << endl;
     cout << "isWeightKnown: " <<testCat3.isWeightKnown() << endl;
 
@@ -54,11 +54,11 @@ int main() {
     /*Weight testCatPOUND = Weight(1, POUND);
     cout <<"weight and unit KILOS: \n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
          testCat.getMaxWeight() << endl;
-    //
+    */
 
     cout << "one pound to kilo: " <<Weight::convertWeight(1, Weight::POUND, Weight::KILO)<<endl;
     cout << "one kilo to pound: " <<Weight::convertWeight(1, Weight::KILO, Weight::POUND)<<endl;
     cout << "one pound to slug: " <<Weight::convertWeight(1, Weight::POUND, Weight::SLUG)<<endl;
     cout << "one slug to pound: " <<Weight::convertWeight(1, Weight::SLUG, Weight::POUND)<<endl;
- */
+
 };

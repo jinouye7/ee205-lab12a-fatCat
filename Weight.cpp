@@ -17,17 +17,36 @@
 /////////////////////////////////////weight setters///////////////////////////
 /// default unit ///
 void Weight::setWeight(float newWeight) {
-    Weight::weight = newWeight;
+    if (bIsKnown == true && newWeight == -1) {
+        throw std::invalid_argument("you cannot 'unknow' a weight");
+    }
+    if(newWeight <= 0) {
+        throw std::invalid_argument("Weight can never be <=0\n");
+    }
+    weight = newWeight;
+    bIsKnown = true;
+
 }
 /// set unit and value ///
 void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
-    Weight::weight = newWeight;
+    if (bIsKnown == true && newWeight == -1) {
+        throw std::invalid_argument("you cannot 'unknow' a weight");
+    }
+    if(newWeight <= 0) {
+        throw std::invalid_argument("Weight can never be <=0\n");
+    }
+    weight = newWeight;
+    bIsKnown = true;
     unitOfWeight = weightUnits;
 }
 
 /// set max weight ///
 void Weight::setMaxWeight(float newMaxWeight) {
+    if (bHasMax == true) {
+        throw std::invalid_argument("Max Weight cannot be changed once set");
+    }
     maxWeight = newMaxWeight;
+    bHasMax = true;
 }
 
 
@@ -59,6 +78,8 @@ Weight::Weight() {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = POUND;
     maxWeight = UNKNOWN_WEIGHT;
+    bIsKnown = false;
+    bHasMax = false;
 }
 //// new weight default unit ///
 Weight::Weight(float newWeight) {
@@ -163,4 +184,15 @@ bool Weight::hasMaxWeight() const noexcept {
         return false;
     }
     return true;
+}
+
+/////////////////////////// Stream Output Operator ///////////////////////////////
+std::ostream &operator<<(std::ostream &os, const Weight::UnitOfWeight originalStream) {
+    switch( originalStream ) {
+        case Weight::POUND: return os << "Pound" ;
+        case Weight::KILO: return os << "Kilo" ;
+        case Weight::SLUG: return os << "Slug" ;
+        default:
+            throw std::out_of_range( "The unit can’t be mapped to a string" );
+    }
 }

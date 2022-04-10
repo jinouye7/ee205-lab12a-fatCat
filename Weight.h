@@ -87,25 +87,28 @@ public:
 /// conversion ///
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit);
 
+    friend std::ostream &operator<<(std::ostream &os, const Weight::UnitOfWeight);
+
 
 ///////////////////////////static public attributes//////////////////////////
 
     constexpr static const float 	UNKNOWN_WEIGHT = -1;
     constexpr static const float 	KILOS_IN_A_POUND = 0.453592;
     constexpr static const float 	SLUGS_IN_A_POUND = 0.031081;
+
     /*
-    static const std::string 	POUND_LABEL = "Pound";
-    static const std::string 	KILO_LABEL = "Kilo";
-    static const std::string 	SLUG_LABEL = "Slug";
-     */
+    const std::string POUND_LABEL = "Pound";
+    const std::string 	KILO_LABEL = "Kilo";
+    const std::string 	SLUG_LABEL = "Slug";
+    */
 private:
 //////////////////////////////Private Member Functions //////////////////////
     void setMaxWeight(float newMaxWeight);
 
 
 //////////////////////////////private attributes//////////////////////////////
-    float weight;
-    float maxWeight;
+    float weight = UNKNOWN_WEIGHT;
+    float maxWeight = UNKNOWN_WEIGHT;
     enum UnitOfWeight unitOfWeight = POUND;
     bool bIsKnown = false;
     bool bHasMax = false;
