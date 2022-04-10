@@ -49,6 +49,16 @@ public:
 
     /// validate weight ///
 
+////////// dump /////////////////////
+    void dump()	const;
+
+////////// numeric operations //////
+
+    bool operator==(const Weight &rhs_Weight) const;
+
+    bool operator<(const Weight &rhs_Weight) const;
+
+    bool operator+=(float rhs_addToWeight);
 
 
 
@@ -88,6 +98,10 @@ public:
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit);
 
     friend std::ostream &operator<<(std::ostream &os, const Weight::UnitOfWeight);
+
+
+
+
 
 
 ///////////////////////////static public attributes//////////////////////////

@@ -61,4 +61,5 @@ int main() {
     cout << "one pound to slug: " <<Weight::convertWeight(1, Weight::POUND, Weight::SLUG)<<endl;
     cout << "one slug to pound: " <<Weight::convertWeight(1, Weight::SLUG, Weight::POUND)<<endl;
 
+    testCat.dump();
 };

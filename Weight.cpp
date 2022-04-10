@@ -14,6 +14,10 @@
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
+#define FORMAT_LINE( className, member ) std::cout \
+                                      << std::setw(8) << (className) \
+                                      << std::setw(20) << (member)   \
+                                      << std::setw(52)  /* (data) */
 /////////////////////////////////////weight setters///////////////////////////
 /// default unit ///
 void Weight::setWeight(float newWeight) {
@@ -121,6 +125,30 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newM
 }
 
 
+/////////////////public member functions /////////////////////////////////////////
+
+
+//// numeric operators////
+
+bool Weight::operator==(const Weight &rhs_Weight) const {
+    /// Remember to convert the two weight's units into a common unit!
+    /// Treat unknown weights as 0 (so we can sort them without dealing
+    /// with exceptions)
+    float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+    float rhs_weight = (rhs_Weight.bIsKnown) ?
+                       rhs_Weight.getWeight(Weight::POUND) : 0;
+    return lhs_weight == rhs_weight;
+}
+
+bool Weight::operator<(const Weight &rhs) const {
+    return weight < rhs.weight;
+}
+
+bool Weight::operator+=(float rhs_addToWeight){
+    return weight += rhs_addToWeight;
+}
+
+
 /////////////////static member functions (conversion functions)///////////////////
 /// KILO to POUND ///
 static float 	fromKilogramToPound (float kilogram) noexcept{
@@ -186,6 +214,19 @@ bool Weight::hasMaxWeight() const noexcept {
     return true;
 }
 
+/////////////////////////////////dump/////////////////////////////////////////////
+void Weight::dump()	const{
+    std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl ;
+    std::cout << std::setfill( ' ' ) ;
+    std::cout << std::left ;
+    std::cout << std::boolalpha ;
+    FORMAT_LINE( "Weight", "isKnown" )         <<isWeightKnown()    << std::endl;
+    FORMAT_LINE( "Weight", "weight" )       << weight << std::endl ;
+    FORMAT_LINE( "Weight", "unitOfWeight" )        << getUnitOfWeight()   << std::endl ;
+    FORMAT_LINE( "Weight", "hasMax" )      << hasMaxWeight()   << std::endl ;
+    FORMAT_LINE( "Weight", "maxWeight" )       << getMaxWeight() << std::endl ;
+}
+
 /////////////////////////// Stream Output Operator ///////////////////////////////
 std::ostream &operator<<(std::ostream &os, const Weight::UnitOfWeight originalStream) {
     switch( originalStream ) {
@@ -196,3 +237,5 @@ std::ostream &operator<<(std::ostream &os, const Weight::UnitOfWeight originalSt
             throw std::out_of_range( "The unit can’t be mapped to a string" );
     }
 }
+
+
