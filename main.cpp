@@ -37,4 +37,14 @@ int main() {
     cout <<"new weight, new unit with max\n" <<testCat.getWeight() << ", " << testCat.getUnitOfWeight() <<", " <<
     testCat.getMaxWeight() << endl;
 
+    cout << "testing hasMax and weight known: " << endl;
+    Weight testCat2;
+    cout <<"default values (hasMaxWeight and Weight know should both return false)" << endl;
+    cout << "hasMaxWeight: " <<testCat2.hasMaxWeight() << endl;
+    cout << "isWeightKnown: " <<testCat2.isWeightKnown() << endl;
+    Weight testCat3 = Weight(35, Weight::POUND, 60);
+    cout <<"default values (hasMaxWeight and Weight know should both return true)" << endl;
+    cout << "hasMaxWeight: " <<testCat3.hasMaxWeight() << endl;
+    cout << "isWeightKnown: " <<testCat3.isWeightKnown() << endl;
+
 };

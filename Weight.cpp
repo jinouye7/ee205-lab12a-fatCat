@@ -48,22 +48,26 @@ float Weight::getMaxWeight() const {
 Weight::Weight() {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = POUND;
+    maxWeight = UNKNOWN_WEIGHT;
 }
 //// new weight default unit ///
 Weight::Weight(float newWeight) {
     setWeight(newWeight);
     unitOfWeight = POUND;
+    maxWeight = UNKNOWN_WEIGHT;
 }
 
 //// default weight new unit ///
 Weight::Weight(Weight::UnitOfWeight newUnitOfWeight)  {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = newUnitOfWeight;
+    maxWeight = UNKNOWN_WEIGHT;
 }
 
 //// new weight new unit ////
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
     setWeight(newWeight, newUnitOfWeight);
+    maxWeight = UNKNOWN_WEIGHT;
 }
 
 //// new weight with maximum ///
@@ -83,5 +87,22 @@ Weight::Weight( Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight){
     setWeight(newWeight, newUnitOfWeight);
     maxWeight = newMaxWeight;
+}
 
+//////////////////////////////////validation//////////////////////////////////////
+/// known weight? ///
+bool Weight::isWeightKnown() const noexcept{
+    if (weight == UNKNOWN_WEIGHT) {
+        return false;
+    }
+        return true;
+}
+
+
+/// known max? ///
+bool Weight::hasMaxWeight() const noexcept {
+    if (maxWeight == UNKNOWN_WEIGHT) {
+        return false;
+    }
+    return true;
 }

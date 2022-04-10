@@ -39,6 +39,12 @@ public:
     float getMaxWeight() const;
 
 //////// Weight validation //////////
+    /// known weight? ///
+    bool isWeightKnown() const noexcept;
+
+    /// known max? ///
+    bool hasMaxWeight() const noexcept;
+
     /// validate weight ///
 
 
