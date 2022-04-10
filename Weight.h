@@ -16,6 +16,7 @@
 #include <ostream>
 
 
+
 class Weight {
 
 public:
@@ -32,11 +33,13 @@ public:
 
 /////// Weight getters //////////////
     /// weight
-    float getWeight() const;
+    float getWeight() const noexcept;
     /// unit
-    UnitOfWeight getUnitOfWeight() const;
+    UnitOfWeight getUnitOfWeight() const noexcept;
     /// max weight
-    float getMaxWeight() const;
+    float getMaxWeight() const noexcept;
+    /// get weight in a particular unit ///
+    float getWeight(UnitOfWeight weighUnits) const noexcept;
 
 //////// Weight validation //////////
     /// known weight? ///
@@ -73,6 +76,19 @@ public:
 
 
 ////////////////////////////// static public member functions ////////////////
+/// KILO to POUND ///
+    static float 	fromKilogramToPound (float kilogram) noexcept;
+/// POUND to KILO ///
+    static float 	fromPoundToKilogram (float pound) noexcept;
+/// SLUG to POUND ///
+    static float 	fromSlugToPound (float slug) noexcept;
+/// POUND to SLUG ///
+    static float 	fromPoundToSlug (float pound) noexcept;
+
+/// conversion ///
+    static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit);
+
+
 
 
 ///////////////////////////static public attributes//////////////////////////
@@ -80,8 +96,11 @@ public:
     constexpr static const float 	UNKNOWN_WEIGHT = -1;
     constexpr static const float 	KILOS_IN_A_POUND = 0.453592;
     constexpr static const float 	SLUGS_IN_A_POUND = 0.031081;
-
-
+    /*
+    static const std::string 	POUND_LABEL = "Pound";
+    static const std::string 	KILO_LABEL = "Kilo";
+    static const std::string 	SLUG_LABEL = "Slug";
+     */
 private:
 //////////////////////////////private attributes//////////////////////////////
     float weight;

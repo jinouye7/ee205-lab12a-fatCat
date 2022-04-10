@@ -28,19 +28,24 @@ void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
 
 ////////////////////////////////////weight getters ////////////////////////
 ///weight///
-float Weight::getWeight() const {
+float Weight::getWeight() const noexcept{
     return weight;
 }
 
 ///unit///
-Weight::UnitOfWeight Weight::getUnitOfWeight() const {
+Weight::UnitOfWeight Weight::getUnitOfWeight() const noexcept{
     return unitOfWeight;
 }
 ///max weight///
-float Weight::getMaxWeight() const {
+float Weight::getMaxWeight() const noexcept{
     return maxWeight;
 }
 
+/// get weight in a specific unit ///
+float Weight::getWeight(UnitOfWeight weighUnits) const noexcept{
+    // conversions //
+    return weight;
+}
 
 ///////////////////////////////////constructors //////////////////////////
 ///default values
@@ -89,6 +94,30 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newM
     maxWeight = newMaxWeight;
 }
 
+
+/////////////////static member functions (conversion functions)///////////////////
+/// KILO to POUND ///
+static float 	fromKilogramToPound (float kilogram) noexcept{
+    return 0;
+}
+/// POUND to KILO ///
+static float 	fromPoundToKilogram (float pound) noexcept{
+    return 0;
+}
+/// SLUG to POUND ///
+static float 	fromSlugToPound (float slug) noexcept{
+    return 0;
+}
+/// POUND to SLUG ///
+static float 	fromPoundToSlug (float pound) noexcept{
+    return 0;
+}
+
+/// conversion ///
+float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit){
+    return 0;
+}
+
 //////////////////////////////////validation//////////////////////////////////////
 /// known weight? ///
 bool Weight::isWeightKnown() const noexcept{
@@ -97,7 +126,6 @@ bool Weight::isWeightKnown() const noexcept{
     }
         return true;
 }
-
 
 /// known max? ///
 bool Weight::hasMaxWeight() const noexcept {
