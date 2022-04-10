@@ -25,6 +25,11 @@ void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
     unitOfWeight = weightUnits;
 }
 
+/// set max weight ///
+void Weight::setMaxWeight(float newMaxWeight) {
+    maxWeight = newMaxWeight;
+}
+
 
 ////////////////////////////////////weight getters ////////////////////////
 ///weight///
@@ -78,7 +83,7 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
 //// new weight with maximum ///
 Weight::Weight(float newWeight, float newMaxWeight)  {
     setWeight(newWeight);
-    maxWeight = newMaxWeight;
+    setMaxWeight(newMaxWeight);
 }
 
 /// default weight, new unit, max ///
@@ -98,24 +103,49 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newM
 /////////////////static member functions (conversion functions)///////////////////
 /// KILO to POUND ///
 static float 	fromKilogramToPound (float kilogram) noexcept{
-    return 0;
+    return kilogram/Weight::KILOS_IN_A_POUND;
 }
 /// POUND to KILO ///
 static float 	fromPoundToKilogram (float pound) noexcept{
-    return 0;
+    return pound*Weight::KILOS_IN_A_POUND;
 }
 /// SLUG to POUND ///
 static float 	fromSlugToPound (float slug) noexcept{
-    return 0;
+    return slug/Weight::SLUGS_IN_A_POUND;
 }
 /// POUND to SLUG ///
 static float 	fromPoundToSlug (float pound) noexcept{
-    return 0;
+    return pound*Weight::SLUGS_IN_A_POUND;
 }
 
 /// conversion ///
 float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit){
-    return 0;
+    float commonValue = 0;
+    float toWeight;
+    // convert to a common unit
+    switch( fromUnit ) {
+        case POUND                      : commonValue = fromWeight; // No conversion necessary
+            break;
+        case KILO                       : commonValue = ::fromKilogramToPound( fromWeight );
+            break;
+        case SLUG                       : commonValue = ::fromSlugToPound( fromWeight );
+            break;
+        default                         : printf("Unknown fromUnit (no conversion)\n");
+            return fromWeight;
+    }
+    // convert common unit to desired unit
+    switch( toUnit ){
+        case POUND                      : toWeight = commonValue; // No conversion necessary
+            break;
+        case KILO                       : toWeight = ::fromPoundToKilogram( commonValue );
+            break;
+        case SLUG                       : toWeight = ::fromPoundToSlug( commonValue );
+            break;
+        default                         : printf("Unknown to Unit (no conversion)\n");
+            return fromWeight;
+    }
+
+    return toWeight;
 }
 
 //////////////////////////////////validation//////////////////////////////////////

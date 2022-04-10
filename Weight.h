@@ -16,7 +16,6 @@
 #include <ostream>
 
 
-
 class Weight {
 
 public:
@@ -89,8 +88,6 @@ public:
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit);
 
 
-
-
 ///////////////////////////static public attributes//////////////////////////
 
     constexpr static const float 	UNKNOWN_WEIGHT = -1;
@@ -102,11 +99,16 @@ public:
     static const std::string 	SLUG_LABEL = "Slug";
      */
 private:
+//////////////////////////////Private Member Functions //////////////////////
+    void setMaxWeight(float newMaxWeight);
+
+
 //////////////////////////////private attributes//////////////////////////////
     float weight;
     float maxWeight;
     enum UnitOfWeight unitOfWeight = POUND;
-
+    bool bIsKnown = false;
+    bool bHasMax = false;
 
 };
 
