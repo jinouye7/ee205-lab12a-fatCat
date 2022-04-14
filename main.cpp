@@ -60,6 +60,17 @@ int main() {
     cout << "one kilo to pound: " <<Weight::convertWeight(1, Weight::KILO, Weight::POUND)<<endl;
     cout << "one pound to slug: " <<Weight::convertWeight(1, Weight::POUND, Weight::SLUG)<<endl;
     cout << "one slug to pound: " <<Weight::convertWeight(1, Weight::SLUG, Weight::POUND)<<endl;
+    Weight testCat4 = Weight(1, Weight::POUND, 60);
+    cout << "testing unit specific getter for getting 1 set pound weight:" <<testCat4.getWeight(Weight::KILO) << endl;
+
 
     testCat.dump();
+
+
+
+
+
+    ///validation tests
+
+    /// test numeric operators
 };

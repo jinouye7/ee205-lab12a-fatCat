@@ -71,8 +71,8 @@ float Weight::getMaxWeight() const noexcept{
 
 /// get weight in a specific unit ///
 float Weight::getWeight(UnitOfWeight weighUnits) const noexcept{
-    // conversions //
-    return weight;
+    float convertedWeight = convertWeight(Weight::getWeight(), Weight::getUnitOfWeight(), weighUnits);
+    return convertedWeight;
 }
 
 ///////////////////////////////////constructors //////////////////////////
