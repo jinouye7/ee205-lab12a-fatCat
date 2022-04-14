@@ -81,7 +81,18 @@ int main() {
     cout << "weight 35 pounds == return true:" << testCat3.operator==(35) << endl;
 
 
+    cout<<"testing isWeightValid"<<endl;
+    cout<<"return false (checkWeight higher than max): " << testCat4.isWeightValid(61) << endl;
+    cout<<"return false (checkWeight <= 0): " << testCat4.isWeightValid(0) << endl;
+    cout<<"return true (checkWeight in valid range): " << testCat4.isWeightValid(30) << endl;
+
+
     testCat.dump();
+    cout <<"validate: "<< testCat.validate() <<endl;
+    cout <<"validate: "<< testCat2.validate() <<endl;
+    cout <<"validate: "<< testCat3.validate() <<endl;
+    cout <<"validate: "<< testCat4.validate() <<endl;
+    cout <<"validate: "<< testCat5.validate() <<endl;
 
 
 

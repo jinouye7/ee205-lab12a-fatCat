@@ -47,7 +47,11 @@ public:
     /// known max? ///
     bool hasMaxWeight() const noexcept;
 
-    /// validate weight ///
+    /// is weight valid  ///
+    bool 	isWeightValid (float checkWeight) const noexcept;
+
+    /// validate ///
+    bool validate();
 
 ////////// dump /////////////////////
     void dump()	const;
@@ -126,6 +130,7 @@ private:
     enum UnitOfWeight unitOfWeight = POUND;
     bool bIsKnown = false;
     bool bHasMax = false;
+
 
 };
 

@@ -115,13 +115,13 @@ Weight::Weight(float newWeight, float newMaxWeight)  {
 Weight::Weight( Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = newUnitOfWeight;
-    maxWeight = newMaxWeight;
+    setMaxWeight(newMaxWeight);
 }
 
 /// new weight, new unit, new max ///
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight){
     setWeight(newWeight, newUnitOfWeight);
-    maxWeight = newMaxWeight;
+    setMaxWeight(newMaxWeight);
 }
 
 
@@ -220,6 +220,46 @@ bool Weight::hasMaxWeight() const noexcept {
         return false;
     }
     return true;
+}
+
+/// is weight valid ///
+bool Weight::isWeightValid (float checkWeight) const noexcept{
+    if(bHasMax){
+        if(checkWeight > maxWeight) {
+            return false;
+        }
+    }
+    if(checkWeight <= 0){
+        return false;
+    }
+    return true;
+
+}
+
+/// validate ///
+bool Weight::validate() {
+    if(isWeightKnown()!= bIsKnown){
+        printf("weight bools disagree");
+        return false;
+    }
+    if(hasMaxWeight() != bHasMax) {
+        printf("max bools disagree");
+        return false;
+    }
+    if(bIsKnown){
+        if(weight <= 0){
+            printf("known weight cannot be <=0");
+            return false;
+        }
+    }
+    if(bHasMax){
+        if(weight > maxWeight) {
+            printf("weight cannot be greater than max");
+            return false;
+        }
+    }
+    return true;
+
 }
 
 /////////////////////////////////dump/////////////////////////////////////////////
