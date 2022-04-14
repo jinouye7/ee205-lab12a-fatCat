@@ -63,6 +63,23 @@ int main() {
     Weight testCat4 = Weight(1, Weight::POUND, 60);
     cout << "testing unit specific getter for getting 1 set pound weight:" <<testCat4.getWeight(Weight::KILO) << endl;
 
+    cout <<"testing operators" << endl;
+    Weight testCat5;
+    try {
+        testCat5.operator+=(2);
+        assert(false);
+    } catch (exception const &e) {}
+    try {
+        testCat5.operator+=(2);
+        assert(false);
+    } catch (exception const &e) {}
+
+    cout << "unknown weight < return true:" << testCat5.operator<(1) << endl;
+    cout << "unknown weight == return false:" << testCat5.operator==(1) << endl;
+    cout << "weight 35 pounds < return true:" << testCat3.operator<(36) << endl;
+    cout << "weight 35 pounds < return false:" << testCat3.operator<(34) << endl;
+    cout << "weight 35 pounds == return true:" << testCat3.operator==(35) << endl;
+
 
     testCat.dump();
 

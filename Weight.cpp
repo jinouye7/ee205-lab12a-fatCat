@@ -25,7 +25,7 @@ void Weight::setWeight(float newWeight) {
         throw std::invalid_argument("you cannot 'unknow' a weight");
     }
     if(newWeight <= 0) {
-        throw std::invalid_argument("Weight can never be <=0\n");
+        throw std::invalid_argument("setWeight(float newWeight) Weight can never be <=0\n");
     }
     weight = newWeight;
     bIsKnown = true;
@@ -140,12 +140,20 @@ bool Weight::operator==(const Weight &rhs_Weight) const {
     return lhs_weight == rhs_weight;
 }
 
-bool Weight::operator<(const Weight &rhs) const {
-    return weight < rhs.weight;
+bool Weight::operator<(const Weight &rhs_Weight) const {
+    float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+    float rhs_weight = (rhs_Weight.bIsKnown) ?
+                       rhs_Weight.getWeight(Weight::POUND) : 0;
+    return lhs_weight < rhs_weight;
 }
 
 bool Weight::operator+=(float rhs_addToWeight){
-    return weight += rhs_addToWeight;
+    if (bIsKnown) {
+        return weight += rhs_addToWeight;
+    }
+    else{
+        throw std::out_of_range("you cannot add to an unknown weight");
+    }
 }
 
 
